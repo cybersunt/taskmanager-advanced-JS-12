@@ -7,7 +7,7 @@ const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-// Components
+// Page Components
 const createSiteMenuTemplate = () => {
   return (
     `<section class="control__btn-wrap">
@@ -109,6 +109,23 @@ const createBoardTemplate = () => {
   );
 };
 
+// Board Components
+const createSortTemplate = () => {
+  return (
+    `<div class="board__filter-list">
+        <a href="#" class="board__filter">SORT BY DEFAULT</a>
+        <a href="#" class="board__filter">SORT BY DATE up</a>
+        <a href="#" class="board__filter">SORT BY DATE down</a>
+      </div>
+    `
+  )
+};
+
 render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
 render(siteMainElement, createFilterTemplate(), `beforeend`);
 render(siteMainElement, createBoardTemplate(), `beforeend`);
+
+const boardElement = siteMainElement.querySelector(`.board`);
+
+render(boardElement, createSortTemplate(), `afterbegin`);
+
