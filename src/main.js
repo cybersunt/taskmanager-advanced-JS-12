@@ -117,12 +117,12 @@ const createSortTemplate = () => {
         <a href="#" class="board__filter">SORT BY DATE down</a>
       </div>
     `
-  )
+  );
 };
 const createTasksTemplate = () => {
   return (
-    `<div class="board__tasks"></div>    `
-  )
+    `<div class="board__tasks"></div>`
+  );
 };
 const createLoadMoreButtonTemplate = () => {
   return (
@@ -398,4 +398,4 @@ render(taskListElement, createTaskEditTemplate(), `beforeend`);
 
 for (let i = 0; i < TASK_COUNT; i++) {
   render(taskListElement, createTaskTemplate(), `beforeend`);
-};
+}
