@@ -125,6 +125,11 @@ const createTasksTemplate = () => {
     `<div class="board__tasks"></div>    `
   )
 };
+const createLoadMoreButtonTemplate = () => {
+  return (
+    `<button class="load-more" type="button">load more</button>`
+  );
+};
 
 render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
 render(siteMainElement, createFilterTemplate(), `beforeend`);
@@ -134,4 +139,5 @@ const boardElement = siteMainElement.querySelector(`.board`);
 
 render(boardElement, createSortTemplate(), `afterbegin`);
 render(boardElement, createTasksTemplate(), `beforeend`);
+render(boardElement, createLoadMoreButtonTemplate(), `beforeend`);
 
