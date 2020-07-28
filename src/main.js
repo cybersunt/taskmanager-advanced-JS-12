@@ -120,6 +120,11 @@ const createSortTemplate = () => {
     `
   )
 };
+const createTasksTemplate = () => {
+  return (
+    `<div class="board__tasks"></div>    `
+  )
+};
 
 render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
 render(siteMainElement, createFilterTemplate(), `beforeend`);
@@ -128,4 +133,5 @@ render(siteMainElement, createBoardTemplate(), `beforeend`);
 const boardElement = siteMainElement.querySelector(`.board`);
 
 render(boardElement, createSortTemplate(), `afterbegin`);
+render(boardElement, createTasksTemplate(), `beforeend`);
 
