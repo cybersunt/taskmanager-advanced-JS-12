@@ -103,6 +103,12 @@ const createFilterTemplate = () => {
     </section>`
   );
 };
+const createBoardTemplate = () => {
+  return (
+    `<section class="board container"></section>`
+  );
+};
 
 render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
 render(siteMainElement, createFilterTemplate(), `beforeend`);
+render(siteMainElement, createBoardTemplate(), `beforeend`);
