@@ -1,17 +1,5 @@
-import {COLORS} from "../const.js";
-import {getRandomInteger} from "../utils.js";
-
-const generateDescription = () => {
-  const descriptions = [
-    `Изучить теорию`,
-    `Сделать домашку`,
-    `Пройти интенсив на соточку`
-  ];
-
-  const randomIndex = getRandomInteger(0, descriptions.length - 1);
-
-  return descriptions[randomIndex];
-};
+import {COLORS, DESCRIPTION, DEFAULT_REPEATING} from "../const.js";
+import {getRandomInteger, getRandomElement} from "../utils.js";
 
 const generateDate = () => {
   // Когда в руках молоток, любая проблема - гвоздь.
@@ -52,31 +40,15 @@ const generateRepeating = () => {
   };
 };
 
-const defaultRepeating = {
-  mo: false,
-  tu: false,
-  we: false,
-  th: false,
-  fr: false,
-  sa: false,
-  su: false
-};
-
-const getRandomColor = () => {
-  const randomIndex = getRandomInteger(0, COLORS.length - 1);
-
-  return COLORS[randomIndex];
-};
-
 export const generateTask = () => {
   const dueDate = generateDate();
-  const repeating = dueDate === null ? generateRepeating() : defaultRepeating;
+  const repeating = dueDate === null ? generateRepeating() : DEFAULT_REPEATING;
 
   return {
-    description: generateDescription(),
+    description: getRandomElement(DESCRIPTION),
     dueDate,
     repeating,
-    color: getRandomColor(),
+    color: getRandomElement(COLORS),
     isArchive: Boolean(getRandomInteger(0, 1)),
     isFavorite: Boolean(getRandomInteger(0, 1))
   };
