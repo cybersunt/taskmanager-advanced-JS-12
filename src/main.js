@@ -30,7 +30,7 @@ render(boardElement, createLoadMoreButtonTemplate(), `beforeend`);
 
 const taskListElement = boardElement.querySelector(`.board__tasks`);
 
-render(taskListElement, createTaskEditTemplate(task[0]), `beforeend`);
+render(taskListElement, createTaskEditTemplate(tasks[0]), `beforeend`);
 
 for (let i = 1; i < TASK_COUNT; i++) {
   render(taskListElement, createTaskTemplate(tasks[i]), `beforeend`);
