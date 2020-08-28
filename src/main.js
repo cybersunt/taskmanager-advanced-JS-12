@@ -4,11 +4,11 @@ import Board from './view/board.js';
 import Sort from './view/sort';
 import Tasks from './view/tasks';
 import Task from './view/task.js';
-import {createTaskEditTemplate} from './view/task-edit.js';
+import TaskEdit from './view/task-edit.js';
 import LoadMoreButton from './view/load-more-button.js';
 import {generateTask} from "./mock/task.js";
 import {generateFilter} from "./mock/filter.js";
-import {renderTemplate, renderElement, RenderPosition} from "./utils.js";
+import {renderElement, RenderPosition} from "./utils.js";
 
 const TASK_COUNT = 22;
 const TASK_COUNT_PER_STEP = 8;
@@ -32,7 +32,7 @@ const tasksListComponent = new Tasks();
 renderElement(boardComponent.getElement(), tasksListComponent.getElement(), RenderPosition.BEFOREEND);
 
 
-renderTemplate(tasksListComponent.getElement(), createTaskEditTemplate(tasks[0]), RenderPosition.BEFOREEND);
+renderElement(tasksListComponent.getElement(), new TaskEdit(tasks[0]).getElement(), RenderPosition.BEFOREEND);
 
 for (let i = 1; i < Math.min(tasks.length, TASK_COUNT_PER_STEP); i++) {
   renderElement(tasksListComponent.getElement(), new Task(tasks[i]).getElement(), RenderPosition.BEFOREEND);
