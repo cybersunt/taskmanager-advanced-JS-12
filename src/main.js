@@ -14,7 +14,7 @@ import NoTask from "./view/no-task";
 const TASK_COUNT = 22;
 const TASK_COUNT_PER_STEP = 8;
 
-const tasks = new Array(TASK_COUNT).fill().map(generateTask);
+const tasks = new Array(TASK_COUNT).fill(``).map(generateTask);
 const filters = generateFilter(tasks);
 
 const siteMainElement = document.querySelector(`.main`);
