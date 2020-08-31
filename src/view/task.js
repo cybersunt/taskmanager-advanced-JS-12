@@ -1,5 +1,5 @@
-import {isTaskExpired, isTaskRepeating, humanizeTaskDueDate} from "../utils";
 import Abstract from "./abstract";
+import {humanizeTaskDueDate, isTaskExpired, isTaskRepeating} from "../utils/task";
 
 const createTaskTemplate = (task) => {
   const {color, description, dueDate, repeating, isArchive, isFavorite} = task;

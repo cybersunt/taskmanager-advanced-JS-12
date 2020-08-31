@@ -8,7 +8,7 @@ import TaskEdit from './view/task-edit.js';
 import LoadMoreButton from './view/load-more-button.js';
 import {generateTask} from "./mock/task.js";
 import {generateFilter} from "./mock/filter.js";
-import {render, RenderPosition} from "./utils.js";
+import {render, RenderPosition} from "./utils/render.js";
 import NoTask from "./view/no-task";
 
 const TASK_COUNT = 22;
