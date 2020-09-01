@@ -1,5 +1,5 @@
 import {COLORS, DESCRIPTION, DEFAULT_REPEATING} from "../const.js";
-import {getRandomInteger, getRandomElement} from "../utils.js";
+import {getBooleanValue, getRandomElement, getRandomInteger} from "../utils/common";
 
 const generateDate = () => {
   // Когда в руках молоток, любая проблема - гвоздь.
@@ -7,7 +7,7 @@ const generateDate = () => {
   // можно использовать "функцию из интернета".
   // Ноль - ложь, один - истина. Для верности приводим
   // к булевому типу с помощью Boolean
-  const isDate = Boolean(getRandomInteger(0, 1));
+  const isDate = getBooleanValue();
 
   if (!isDate) {
     return null;
@@ -49,7 +49,7 @@ export const generateTask = () => {
     dueDate,
     repeating,
     color: getRandomElement(COLORS),
-    isArchive: Boolean(getRandomInteger(0, 1)),
-    isFavorite: Boolean(getRandomInteger(0, 1))
+    isArchive: getBooleanValue(),
+    isFavorite: getBooleanValue()
   };
 };

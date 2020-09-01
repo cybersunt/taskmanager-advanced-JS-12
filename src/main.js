@@ -8,13 +8,13 @@ import TaskEdit from './view/task-edit.js';
 import LoadMoreButton from './view/load-more-button.js';
 import {generateTask} from "./mock/task.js";
 import {generateFilter} from "./mock/filter.js";
-import {render, RenderPosition} from "./utils.js";
+import {render, RenderPosition} from "./utils/render.js";
 import NoTask from "./view/no-task";
 
 const TASK_COUNT = 22;
 const TASK_COUNT_PER_STEP = 8;
 
-const tasks = new Array(TASK_COUNT).fill().map(generateTask);
+const tasks = new Array(TASK_COUNT).fill(``).map(generateTask);
 const filters = generateFilter(tasks);
 
 const siteMainElement = document.querySelector(`.main`);
