@@ -1,6 +1,6 @@
 import Board from "../view/board.js";
 import Sort from "../view/sort.js";
-import TaskList from "../view/task-list.js";
+import Tasks from "../view/tasks.js";
 import NoTask from "../view/no-task.js";
 import {remove, render, RenderPosition, replace} from "../utils/render";
 import Task from "../view/task";
@@ -15,7 +15,7 @@ export default class BoardPresenter {
 
     this._boardComponent = new Board();
     this._sortComponent = new Sort();
-    this._taskListComponent = new TaskList();
+    this._taskListComponent = new Tasks();
     this._noTaskComponent = new NoTask();
   }
 
@@ -31,7 +31,7 @@ export default class BoardPresenter {
     render(this._boardComponent, this._sortComponent, RenderPosition.AFTERBEGIN);
   }
 
-  _renderTask() {
+  _renderTask(task) {
     // Метод, куда уйдёт логика созданию и рендерингу компонетов задачи,
     // текущая функция renderTask в main.js
     const taskComponent = new Task(task);
