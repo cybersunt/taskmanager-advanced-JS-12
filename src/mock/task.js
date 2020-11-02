@@ -1,5 +1,6 @@
 import {COLORS, DESCRIPTION, DEFAULT_REPEATING} from "../const.js";
 import {getBooleanValue, getRandomElement, getRandomInteger} from "../utils/common";
+import {nanoid} from "nanoid";
 
 const generateDate = () => {
   // Когда в руках молоток, любая проблема - гвоздь.
@@ -45,6 +46,7 @@ export const generateTask = () => {
   const repeating = dueDate === null ? generateRepeating() : DEFAULT_REPEATING;
 
   return {
+    id: nanoid(),
     description: getRandomElement(DESCRIPTION),
     dueDate,
     repeating,
