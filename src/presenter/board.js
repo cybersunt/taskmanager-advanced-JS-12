@@ -7,6 +7,7 @@ import {render, RenderPosition, remove} from "../utils/render.js";
 import {SortType} from "../const";
 import {sortTaskDown, sortTaskUp} from "../utils/task";
 import Task from "./task";
+import {updateItem} from "../utils/common";
 
 const TASK_COUNT_PER_STEP = 8;
 
@@ -15,6 +16,7 @@ export default class BoardPresenter {
     this._boardContainer = boardContainer;
     this._renderedTaskCount = TASK_COUNT_PER_STEP;
     this._currentSortType = SortType.DEFAULT;
+    this._taskPresenter = {};
 
     this._boardComponent = new Board();
     this._sortComponent = new Sort();
@@ -22,6 +24,7 @@ export default class BoardPresenter {
     this._noTaskComponent = new NoTask();
     this._loadMoreButtonComponent = new LoadMoreButton();
 
+    this._handleTaskChange = this._handleTaskChange.bind(this);
     this._handleLoadMoreButtonClick = this._handleLoadMoreButtonClick.bind(this);
     this._handleSortTypeChange = this._handleSortTypeChange.bind(this);
   }
@@ -58,6 +61,12 @@ export default class BoardPresenter {
     this._currentSortType = sortType;
   }
 
+  _handleTaskChange(updatedTask) {
+    this._boardTasks = updateItem(this._boardTasks, updatedTask);
+    this._sourcedBoardTasks = updateItem(this._sourcedBoardTasks, updatedTask);
+    this._taskPresenter[updatedTask.id].init(updatedTask);
+  }
+
   _handleSortTypeChange(sortType) {
     if (this._currentSortType === sortType) {
       return;
@@ -73,7 +82,7 @@ export default class BoardPresenter {
   }
 
   _renderTask(task) {
-    const taskPresenter = new Task(this._taskListComponent);
+    const taskPresenter = new Task(this._taskListComponent, this._handleTaskChange);
     taskPresenter.init(task);
     this._taskPresenter[task.id] = taskPresenter;
   }
