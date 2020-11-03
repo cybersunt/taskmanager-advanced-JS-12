@@ -72,12 +72,26 @@ export default class Task extends Abstract {
   constructor(task) {
     super();
     this._task = task;
+
     this._editClickHandler = this._editClickHandler.bind(this);
+    this._favoriteClickHandler = this._favoriteClickHandler.bind(this);
+    this._archiveClickHandler = this._archiveClickHandler.bind(this);
   }
 
   getTemplate() {
     return createTaskTemplate(this._task);
   }
+
+  _favoriteClickHandler(evt) {
+    evt.preventDefault();
+    this._callback.favoriteClick();
+  }
+
+  _archiveClickHandler(evt) {
+    evt.preventDefault();
+    this._callback.archiveClick();
+  }
+
   _editClickHandler(evt) {
     evt.preventDefault();
     this._callback.editClick();
@@ -86,5 +100,15 @@ export default class Task extends Abstract {
   setEditClickHandler(callback) {
     this._callback.editClick = callback;
     this.getElement().querySelector(`.card__btn--edit`).addEventListener(`click`, this._editClickHandler);
+  }
+
+  setFavoriteClickHandler(callback) {
+    this._callback.favoriteClick = callback;
+    this.getElement().querySelector(`.card__btn--favorites`).addEventListener(`click`, this._favoriteClickHandler);
+  }
+
+  setArchiveClickHandler(callback) {
+    this._callback.archiveClick = callback;
+    this.getElement().querySelector(`.card__btn--archive`).addEventListener(`click`, this._archiveClickHandler);
   }
 }
