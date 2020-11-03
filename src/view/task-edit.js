@@ -1,6 +1,6 @@
 import {COLORS} from "../const.js";
-import Abstract from "./abstract";
 import {humanizeTaskDueDate, isTaskRepeating} from "../utils/task";
+import Smart from "./smart";
 
 const BLANK_TASK = {
   color: COLORS[0],
@@ -134,7 +134,7 @@ const createTaskEditTemplate = (data) => {
   </article>`;
 };
 
-export default class TaskEdit extends Abstract {
+export default class TaskEdit extends Smart {
   constructor(task = BLANK_TASK) {
     super();
     this._data = TaskEdit.parseTaskToData(task);
@@ -186,34 +186,6 @@ export default class TaskEdit extends Abstract {
     this._callback.formSubmit = callback;
     this.getElement().querySelector(`form`).addEventListener(`submit`, this._formSubmitHandler);
   }
-
-  updateElement() {
-    let prevElement = this.getElement();
-    const parent = prevElement.parentElement;
-    this.removeElement();
-
-    const newElement = this.getElement();
-
-    parent.replaceChild(newElement, prevElement);
-    prevElement = null; // Чтобы окончательно "убить" ссылку на prevElement
-
-    this.restoreHandlers();
-  }
-
-  updateData(update) {
-    if (!update) {
-      return;
-    }
-
-    this._data = Object.assign(
-        {},
-        this._data,
-        update
-    );
-
-    this.updateElement();
-  }
-
 
   static parseTaskToData(task) {
     return Object.assign(
