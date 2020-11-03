@@ -1,6 +1,6 @@
 import {COLORS} from "../const.js";
 import Abstract from "./abstract";
-import {humanizeTaskDueDate, isTaskExpired, isTaskRepeating} from "../utils/task";
+import {humanizeTaskDueDate, isTaskRepeating} from "../utils/task";
 
 const BLANK_TASK = {
   color: COLORS[0],
@@ -19,7 +19,7 @@ const BLANK_TASK = {
   isFavorite: false
 };
 
-const createTaskEditDateTemplate = (dueDate, isDueDate ) => {
+const createTaskEditDateTemplate = (dueDate, isDueDate) => {
   return `<button class="card__date-deadline-toggle" type="button">
       date: <span class="card__date-status">${isDueDate ? `yes` : `no`}</span>
     </button>
@@ -206,9 +206,9 @@ export default class TaskEdit extends Abstract {
     }
 
     this._data = Object.assign(
-      {},
-      this._data,
-      update
+        {},
+        this._data,
+        update
     );
 
     this.updateElement();
@@ -217,12 +217,12 @@ export default class TaskEdit extends Abstract {
 
   static parseTaskToData(task) {
     return Object.assign(
-      {},
-      task,
-      {
-        isDueDate: task.dueDate !== null,
-        isRepeating: isTaskRepeating(task.repeating)
-      }
+        {},
+        task,
+        {
+          isDueDate: task.dueDate !== null,
+          isRepeating: isTaskRepeating(task.repeating)
+        }
     );
   }
 
