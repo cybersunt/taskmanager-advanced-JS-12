@@ -179,7 +179,7 @@ export default class TaskEdit extends Smart {
 
   reset(task) {
     this.updateData(
-      TaskEdit.parseTaskToData(task)
+        TaskEdit.parseTaskToData(task)
     );
   }
 
