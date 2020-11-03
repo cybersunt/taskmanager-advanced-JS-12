@@ -177,6 +177,12 @@ export default class TaskEdit extends Smart {
       .addEventListener(`click`, this._repeatingToggleHandler);
   }
 
+  reset(task) {
+    this.updateData(
+      TaskEdit.parseTaskToData(task)
+    );
+  }
+
   _formSubmitHandler(evt) {
     evt.preventDefault();
     this._callback.formSubmit(TaskEdit.parseDataToTask(this._data));
