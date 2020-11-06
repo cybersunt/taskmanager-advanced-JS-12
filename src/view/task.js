@@ -1,20 +1,14 @@
 import Abstract from "./abstract";
-import {humanizeTaskDueDate, isTaskExpired, isTaskRepeating} from "../utils/task";
+import {formatTaskDueDate, isTaskExpired, isTaskRepeating} from "../utils/task";
 
 const createTaskTemplate = (task) => {
   const {color, description, dueDate, repeating, isArchive, isFavorite} = task;
 
-  const date = dueDate !== null
-    ? humanizeTaskDueDate(dueDate)
-    : ``;
+  const date = formatTaskDueDate(dueDate);
 
-  const deadlineClassName = isTaskExpired(dueDate)
-    ? `card--deadline`
-    : ``;
+  const deadlineClassName = isTaskExpired(dueDate) ? `card--deadline` : ``;
 
-  const repeatClassName = isTaskRepeating(repeating)
-    ? `card--repeat`
-    : ``;
+  const repeatClassName = isTaskRepeating(repeating) ? `card--repeat` : ``;
 
   const archiveClassName = isArchive
     ? `card__btn--archive card__btn--disabled`
