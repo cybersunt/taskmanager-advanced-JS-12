@@ -18,6 +18,15 @@ export const SortType = {
   DATE_UP: `date-up`
 };
 
+export const FilterType = {
+  ALL: `all`,
+  OVERDUE: `overdue`,
+  TODAY: `today`,
+  FAVORITES: `favorites`,
+  REPEATING: `repeating`,
+  ARCHIVE: `archive`
+};
+
 export const DESCRIPTION = [
   `Изучить теорию`,
   `Сделать домашку`,
