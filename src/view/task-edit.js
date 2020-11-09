@@ -1,7 +1,8 @@
+import flatpickr from "flatpickr";
+import he from "he";
 import {COLORS} from "../const.js";
 import {formatTaskDueDate, isTaskRepeating} from "../utils/task";
 import Smart from "./smart";
-import flatpickr from "flatpickr";
 
 import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 
@@ -107,7 +108,7 @@ const createTaskEditTemplate = (data) => {
               class="card__text"
               placeholder="Start typing your text here..."
               name="text"
-            >${description}</textarea>
+            >${he.encode(description)}</textarea>
           </label>
         </div>
 
