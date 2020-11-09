@@ -7,7 +7,7 @@ const Mode = {
   EDITING: `EDITING`
 };
 
-export default class Task {
+export default class TaskPresenter {
   constructor(taskListContainer, changeData, changeMode) {
     this._taskListContainer = taskListContainer;
     this._changeData = changeData;
