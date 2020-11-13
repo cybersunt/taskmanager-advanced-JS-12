@@ -4,7 +4,7 @@ import Tasks from "../view/tasks.js";
 import NoTask from "../view/no-task.js";
 import LoadMoreButton from "../view/load-more-button.js";
 import {render, RenderPosition, remove} from "../utils/render.js";
-import {SortType, UpdateType, UserAction, FilterType} from "../const.js";
+import {SortType, UpdateType, UserAction } from "../const.js";
 import {sortTaskDown, sortTaskUp} from "../utils/task";
 import TaskPresenter from "./task";
 import TaskNewPresenter from "./task-new.js";
@@ -49,24 +49,32 @@ export default class BoardPresenter {
     this._renderBoard();
   }
 
-  createTask() {
-    this._currentSortType = SortType.DEFAULT;
-    this._filterModel.setFilter(UpdateType.MAJOR, FilterType.ALL);
-    this._taskNewPresenter.init();
+  destroy() {
+    this._clearBoard({resetRenderedTaskCount: true, resetSortType: true});
+
+    remove(this._taskListComponent);
+    remove(this._boardComponent);
+
+    this._tasksModel.removeObserver(this._handleModelEvent);
+    this._filterModel.removeObserver(this._handleModelEvent);
+  }
+
+  createTask(callback) {
+    this._taskNewPresenter.init(callback);
   }
 
   _getTasks() {
     const filterType = this._filterModel.getFilter();
     const tasks = this._tasksModel.getTasks();
-    const filtredTasks = filter[filterType](tasks);
+    const filteredTasks = filter[filterType](tasks);
 
     switch (this._currentSortType) {
       case SortType.DATE_UP:
-        return filtredTasks.sort(sortTaskUp);
+        return filteredTasks.sort(sortTaskUp);
       case SortType.DATE_DOWN:
-        return filtredTasks.sort(sortTaskDown);
+        return filteredTasks.sort(sortTaskDown);
     }
-    return filtredTasks;
+    return filteredTasks;
   }
 
   _handleModeChange() {
