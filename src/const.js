@@ -1,4 +1,10 @@
-export const COLORS = [`black`, `yellow`, `blue`, `green`, `pink`];
+export const Color = {
+  BLACK: `black`,
+  YELLOW: `yellow`,
+  BLUE: `blue`,
+  GREEN: `green`,
+  PINK: `pink`
+};
 
 export const UserAction = {
   UPDATE_TASK: `UPDATE_TASK`,
