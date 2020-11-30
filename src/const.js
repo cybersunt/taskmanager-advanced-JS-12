@@ -6,6 +6,8 @@ export const Color = {
   PINK: `pink`
 };
 
+export const COLORS = Object.values(Color);
+
 export const UserAction = {
   UPDATE_TASK: `UPDATE_TASK`,
   ADD_TASK: `ADD_TASK`,
@@ -15,7 +17,8 @@ export const UserAction = {
 export const UpdateType = {
   PATCH: `PATCH`,
   MINOR: `MINOR`,
-  MAJOR: `MAJOR`
+  MAJOR: `MAJOR`,
+  INIT: `INIT`
 };
 
 export const SortType = {
