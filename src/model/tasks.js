@@ -6,9 +6,11 @@ export default class Tasks extends Observer {
     this._tasks = [];
   }
 
-  setTasks(tasks) {
+  setTasks(updateType, tasks) {
     this._tasks = tasks.slice();
+    this._notify(updateType);
   }
+
 
   getTasks() {
     return this._tasks;
